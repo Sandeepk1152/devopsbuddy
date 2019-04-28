@@ -1,7 +1,10 @@
 package com.devopsbuddy;
 
+import com.devopsbuddy.web.i18n.I18NService;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -9,8 +12,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class DevopsbuddyApplicationTests {
 
+    @Autowired
+    I18NService i18NService;
+
     @Test
-    public void contextLoads() {
+    public void m1(){
+        String expectedResult="Bootstrap starter template";
+        String messageId="index.main.callout";
+        String actual=i18NService.getMessage(messageId);
+        Assert.assertEquals("actual and exp does not match",expectedResult,actual);
+
+
     }
+
 
 }
